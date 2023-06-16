@@ -43,19 +43,19 @@
     <div class="col-lg-6 col-md-6 col-sm-12 final">
       <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" method="POST" action="/logistics">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control"  placeholder="Name" name="namelogistics">
+            <input type="text" class="form-control"  placeholder="Name" name="namelogistics" required autofocus>
             <label for="floatingPassword">Name</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control"  placeholder="Lastname" name="lastnamelogistics" id="Lastname">
+            <input type="text" class="form-control"  placeholder="Lastname" name="lastnamelogistics" id="Lastname" required>
             <label for="name">Lastame</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" name="emaillogistics" placeholder="Email">
+            <input type="email" class="form-control" id="floatingInput" name="emaillogistics" placeholder="Email" required>
             <label for="floatingInput">Email address</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="tel" class="form-control"  placeholder="Phonenumber" name="phonenumberlogistics">
+            <input type="tel" class="form-control"  placeholder="Phonenumber" name="phonenumberlogistics" required>
             <label for="floatingPassword">Phonenumber</label>
           </div>
           <button class="w-100 btn btn-lg btn-primary" type="submit" 
