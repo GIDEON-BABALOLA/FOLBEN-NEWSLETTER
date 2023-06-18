@@ -10,6 +10,15 @@ app.get("/", function(request, response){
   response.sendFile(__dirname + "/public/Newsletter-Signup.html")
 });
 app.post("/", function(request, res){
+
+   const urle = "https://extreme-ip-lookup.com/json/?key=0pc1u7KQdIKKkIH4H7sT"
+  https.get(urle, function(response){
+    console.log(response.statusCode);
+    response.on("data", function(data){
+      const output = JSON.parse(data);
+      console.log(output)
+    })
+  })
   const firstName = request.body.nametransportation;
   const lastName = request.body.lastnametransportation;
   const email = request.body.emailtransportation;
