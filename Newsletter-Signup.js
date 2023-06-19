@@ -54,7 +54,7 @@ app.post("/", function(request, res){
     response.on("data", function(data){
       console.log(JSON.parse(data));
       var mol = JSON.parse(data);
-      console.log(mol.errors[0].error_code);
+    
     })
   })
   req.write(jData);
@@ -105,11 +105,9 @@ app.post("/logistics", function(request, res){
   req.end();
 })
 app.post("/failure-transportation", function(request, response){
-  // response.sendFile("/", __dirname + "/public/Newsletter-Signup.html")
   response.redirect("/");
 });
 app.post("/failure-logistics", function(request, response){
-  // response.sendFile("/", __dirname + "/public/Newsletter-Signup.html")
   response.redirect("/logistics");
 })
 app.listen(process.env.PORT || 1000, function(){
