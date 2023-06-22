@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
+const keyman = require(__dirname + "/API Keys.js");
 const { subscribe } = require("diagnostics_channel");
 const app = express();
 app.use(express.static("public"));
@@ -10,16 +11,7 @@ app.get("/", function(request, response){
   response.sendFile(__dirname + "/public/Newsletter-Signup.html")
 });
 app.post("/", function(request, res){
-
-   const urle = "https://extreme-ip-lookup.com/json/?key=0pc1u7KQdIKKkIH4H7sT"
-  https.get(urle, function(response){
-    console.log(response.statusCode);
-    response.on("data", function(data){
-      const output = JSON.parse(data);
-      console.log(output)
-    })
-  })
-  const firstName = request.body.nametransportation;
+    const firstName = request.body.nametransportation;
   const lastName = request.body.lastnametransportation;
   const email = request.body.emailtransportation;
   const phoneNumber = request.body.phonenumbertransportation;
@@ -39,9 +31,10 @@ app.post("/", function(request, res){
   }
   const jData = JSON.stringify(deta);
   var url = "https://us21.api.mailchimp.com/3.0/lists/d81f8f184e";
+  const transportkey = keyman.keylord.transportationkey;
   const options = {
     method : "POST",
-    auth: "FOLBEN:6f9e8ed53029e5e9011e30fb44416929-us21",
+    auth: "FOLBEN:" + transportkey,
   };
  
   const req = https.request(url, options, function(response){
@@ -85,9 +78,10 @@ app.post("/logistics", function(request, res){
   }
   const jDatar = JSON.stringify(detar);
   var urle = "https://us21.api.mailchimp.com/3.0/lists/6edd1ccc18";
+  const logiskey = keyman.keylord.logisticskey;
   const optionso = {
     method : "POST",
-    auth: "LOGISTICS:63cf07880c416e990af210cf369f23cc-us21",
+    auth: "LOGISTICS:" +logiskey,
   };
  
   const req = https.request(urle, optionso, function(response){
