@@ -8,7 +8,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(request, response){
-  response.sendFile(__dirname + "/public/Newsletter-Signup.html")
+  response.sendFile(__dirname + "/public/Newsletter-Signup.html");
 });
 app.post("/", function(request, res){
     const firstName = request.body.nametransportation;
@@ -103,6 +103,12 @@ app.post("/failure-transportation", function(request, response){
 });
 app.post("/failure-logistics", function(request, response){
   response.redirect("/logistics");
+});
+  
+// Handling non matching request from the client
+app.use((req, res, next) => {
+  res.status(404).sendFile(
+      __dirname + "/ErrorPage.html");
 })
 app.listen(process.env.PORT || 1000, function(){
   console.log("server is running on port 1000")
