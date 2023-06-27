@@ -8,7 +8,10 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(request, response){
+  response.sendFile(__dirname + "/public/preLoader.html");
+setTimeout(function(){
   response.sendFile(__dirname + "/public/Newsletter-Signup.html");
+}, 3000);
 });
 app.post("/", function(request, res){
     const firstName = request.body.nametransportation;
