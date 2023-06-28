@@ -7,12 +7,17 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
+// app.get("/", function(request, response){
+//   response.sendFile(__dirname + "/public/Newsletter-Signup.html");
+// });
 app.get("/", function(request, response){
+  // Serve the preloader page immediately
   response.sendFile(__dirname + "/public/preLoader.html");
-setTimeout(function(){
-  response.sendFile(__dirname + "/public/Newsletter-Signup.html");
-}, 3000);
 });
+app.get("/newsletter", function(request, response){
+  response.sendFile(__dirname + "/public/Newsletter-Signup.html");
+});
+
 app.post("/", function(request, res){
     const firstName = request.body.nametransportation;
   const lastName = request.body.lastnametransportation;
