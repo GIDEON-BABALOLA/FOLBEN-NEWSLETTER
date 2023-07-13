@@ -2,19 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 const keyman = require(__dirname + "/API Keys.js");
+const mail = require(__dirname + "/mail.js");
 const { subscribe } = require("diagnostics_channel");
 const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-
-// app.get("/", function(request, response){
-//   response.sendFile(__dirname + "/public/Newsletter-Signup.html");
-// });
 app.get("/", function(request, response){
-  // Serve the preloader page immediately
-  response.sendFile(__dirname + "/public/preLoader.html");
-});
-app.get("/newsletter", function(request, response){
   response.sendFile(__dirname + "/public/Newsletter-Signup.html");
 });
 
@@ -47,19 +40,19 @@ app.post("/", function(request, res){
  
   const req = https.request(url, options, function(response){
     if(response.statusCode === 200){
-      res.sendFile( __dirname + "/Transportation-success.html")
+      res.sendFile( __dirname + "/public/Transportation-success.html")
     }
     else{
-      res.sendFile( __dirname + "/Transportation-failure.html")
+      res.sendFile( __dirname + "/public/Transportation-failure.html")
     }
     response.on("data", function(data){
       console.log(JSON.parse(data));
       var mol = JSON.parse(data);
-    
-    })
+    });
   })
+ 
   req.write(jData);
-  req.end(); 
+  req.end();
 })
 
 app.get("/logistics", function(request, response){
@@ -94,10 +87,10 @@ app.post("/logistics", function(request, res){
  
   const req = https.request(urle, optionso, function(response){
     if(response.statusCode === 200){
-      res.sendFile( __dirname + "/Logistics-success.html")
+      res.sendFile( __dirname + "/public/Logistics-success.html");
     }
     else{
-      res.sendFile(__dirname + "/Logistics-failure.html")
+      res.sendFile(__dirname + "/public/Logistics-failure.html");
     }
     response.on("data", function(data){
       console.log(JSON.parse(data));
@@ -114,9 +107,12 @@ app.post("/failure-logistics", function(request, response){
 });
   
 // Handling non matching request from the client
-app.use((req, res, next) => {
-  res.status(404).sendFile(
-      __dirname + "/ErrorPage.html");
+// app.use((req, res, next) => {
+//   res.status(404).sendFile(
+//       __dirname + "/ErrorPage.html");
+// })
+app.use( function(request, response, next){
+  response.status(404).sendFile(__dirname + "/public/ErrorPage.html");
 })
 app.listen(process.env.PORT || 1000, function(){
   console.log("server is running on port 1000")

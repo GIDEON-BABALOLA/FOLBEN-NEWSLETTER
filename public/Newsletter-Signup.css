@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 .first-back{
   box-shadow: 4px 4px 8px 4px rgba(117, 117, 117 , .2)!important;
   margin-top: 4%;
@@ -12,6 +13,11 @@ display: none;
 }
 .navbar-nav{
   padding: 0% 18%;
+}
+
+.latoman{
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
 }
 .loader{
   position: absolute;
@@ -81,6 +87,9 @@ animation-delay: 0.5s;
     box-shadow: 5px 0 10px 0 #ccc;
     padding: 1% 0%;
 }
+.format-mac{
+  padding: 0% 0%;
+}
 .caller{
   text-decoration: none;
   color: black;
@@ -145,11 +154,12 @@ animation-delay: 0.5s;
   @media (max-width: 768px){
     .cas{
       display: none;
+    }
       .final{
         padding: 13% 2%;
       }
     }
-  }
+  
   @media (max-width: 767px){
     .final{
       padding: 15% 3%;
