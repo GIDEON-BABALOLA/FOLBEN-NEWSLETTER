@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
 const keyman = require(__dirname + "/API Keys.js");
-const mail = require(__dirname + "/mail.js");
 const { subscribe } = require("diagnostics_channel");
 const app = express();
 app.use(express.static("public"));
